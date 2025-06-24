@@ -1,14 +1,17 @@
-
-import React from 'react';
-import ProductCard from './ProductCard';
+import React from "react";
+import ProductCard from "./ProductCard";
 
 interface Product {
-  id: string;
-  title: string;
+  _id: string;
+  name: string;
   price: number;
+  category: string;
   image: string;
+  stock: number;
+  product_price: number;
+  main_image: string;
   description: string;
-  isFavorite?: boolean;
+  isFavorite: boolean;
 }
 
 interface ProductGridProps {
@@ -23,15 +26,15 @@ const ProductGrid = ({ products, title }: ProductGridProps) => {
         {title && (
           <h2 className="text-3xl font-bold text-center mb-12">{title}</h2>
         )}
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {products.map((product) => (
             <ProductCard
-              key={product.id}
-              id={product.id}
-              title={product.title}
-              price={product.price}
-              image={product.image}
+              key={product._id}
+              id={product._id}
+              title={product.name}
+              price={product.product_price}
+              image={product.main_image}
               description={product.description}
               isFavorite={product.isFavorite}
             />
